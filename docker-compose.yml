@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: ./backend
+    environment:
+      NODE_ENV: development
+    image: kanban/backend
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - ./.env.dev
+      - ./backend/.env.dev
+    ports:
+      - 4000:4000
+      - 9229:9229
+    command: "yarn dev"
