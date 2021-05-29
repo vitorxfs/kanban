@@ -10,10 +10,10 @@ RUN yarn install
 COPY . .
 
 RUN yarn build
-RUN cp -R src/graphql/types/**/*.graphql build/graphql/types
-RUN cp -R src/graphql/types/*.graphql build/graphql/types
+# RUN cp -R src/graphql/types/**/*.gql build/graphql/types
+RUN cp -R src/graphql/types/*.gql build/graphql/types
 RUN yarn install
 
-EXPOSE 3000
+EXPOSE 4000
 
 CMD [ "node", "build/server.js" ]
