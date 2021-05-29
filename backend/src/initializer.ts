@@ -9,7 +9,7 @@ export const getUserParser = () => {
   }
 
   return userParser;
-}
+};
 
 let userRepository: IUserRepository;
 export const getUserRepository = () => {
@@ -18,7 +18,7 @@ export const getUserRepository = () => {
   }
 
   return userRepository;
-}
+};
 
 let userService: IUserService;
 export const getUserService = () => {
@@ -27,4 +27,4 @@ export const getUserService = () => {
   }
 
   return userService;
-}
+};

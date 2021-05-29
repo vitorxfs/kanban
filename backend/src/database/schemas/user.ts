@@ -21,7 +21,7 @@ const userSchema = new Schema<UserDbAttributes>({
     type: String,
     required: true,
     unique: true,
-  }
+  },
 });
 
 export const User = model('User', userSchema);

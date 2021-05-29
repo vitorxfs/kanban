@@ -1,6 +1,5 @@
 import { UserDbAttributes } from '../schemas/user';
 import { UserAttributes } from '../../models/user.model';
-import { parse } from 'graphql';
 
 export interface IUserParser {
   parse(dbModel: UserDbAttributes): UserAttributes;

@@ -5,7 +5,7 @@ export interface UserAttributes {
   email: string;
 }
 
-class User implements UserAttributes {
+export class User implements UserAttributes {
   id: string;
   name: string;
   surname: string;
