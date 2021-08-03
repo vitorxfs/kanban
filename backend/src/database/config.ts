@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
 
-import { MONGO_URL } from '../env';
+import { DB_NAME, DB_HOST, DB_PORT, DB_USER, DB_PASS } from '../env';
 
-const configDB = () => {
-  mongoose.connect(MONGO_URL, {
-    useUnifiedTopology: true,
+mongoose.connect(
+  `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`,
+  {
     useNewUrlParser: true,
-  });
-  mongoose.connection.on('error', (err) => console.log(`MongoDB connection error: ${err}`));
-};
-
-export default configDB;
+    useCreateIndex: true,
+  },
+);
+mongoose.connection.on('error', () => console.error('ERROR::databese connection error'));
+mongoose.connection.once('open', () => console.log('SUCCEEDED::database connected'));

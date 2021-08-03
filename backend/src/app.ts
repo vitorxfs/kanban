@@ -1,9 +1,7 @@
 import { ApolloServer } from 'apollo-server';
 
 import { typeDefs, resolvers } from './graphql';
-import configDB from './database/config';
-
-configDB();
+import './database/config';
 
 const app = new ApolloServer({ typeDefs, resolvers });
 

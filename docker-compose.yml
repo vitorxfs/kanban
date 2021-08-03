@@ -1,16 +1,14 @@
 services:
-  mongodb:
-    image: mongo:4.4.6
-    container_name: mongodb
-    restart: unless-stopped
-    env_file: ./.env.dev
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=123456
+  db:
+    image: mongo:4.2
+    container_name: db
+    restart: always
     ports:
-      - 27017:27017
-    volumes:
-      - dbdata:/usr/src/data/db
+      - ${DB_PORT}:27017
+    environment:
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
 
   backend:
     build: ./backend
@@ -21,14 +19,11 @@ services:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
     env_file:
-      - ./.env.dev
+      - ./.env
       - ./backend/.env.dev
     ports:
-      - 4000:4000
+      - ${SERVER_PORT}:4000
       - 9229:9229
     command: "yarn dev"
     depends_on:
-      - mongodb
-
-volumes:
-  dbdata:
+      - db
