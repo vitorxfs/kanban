@@ -1,4 +1,4 @@
-import { Types, model, Schema } from 'mongoose';
+import { model, Schema } from 'mongoose';
 
 export interface UserDbAttributes {
   _id: string;
@@ -8,7 +8,6 @@ export interface UserDbAttributes {
 }
 
 const userSchema = new Schema<UserDbAttributes>({
-  _id: Types.ObjectId,
   name: {
     type: String,
     required: true,

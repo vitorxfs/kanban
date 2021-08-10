@@ -8,8 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "nodemon --exec node --inspect=0.0.0.0 -r sucrase/register ./src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon --exec node --inspect=0.0.0.0 -r sucrase/register ./src/server.ts"
   },
   "author": "Vitor Sanches",
   "license": "MIT",
@@ -21,7 +20,6 @@
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "jest": "^27.0.1",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.0",
     "sucrase": "^3.18.1",
