@@ -1,12 +1,12 @@
 import { UserDbAttributes } from '../schemas/user';
-import { UserAttributes } from '../../models/user.model';
+import User from '../../models/user.model';
 
 export interface IUserParser {
-  parse(dbModel: UserDbAttributes): UserAttributes;
+  parse(dbModel: UserDbAttributes): User;
 }
 
 export class UserParser implements IUserParser {
-  parse(dbModel: UserDbAttributes): UserAttributes {
+  parse(dbModel: UserDbAttributes): User {
     const {
       _id,
       email,
@@ -14,11 +14,11 @@ export class UserParser implements IUserParser {
       surname,
     } = dbModel;
 
-    return {
+    return new User({
       id: _id,
       email,
       name,
       surname,
-    };
+    });
   }
 }

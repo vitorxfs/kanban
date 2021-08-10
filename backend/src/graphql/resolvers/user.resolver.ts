@@ -30,7 +30,9 @@ export default {
   },
   Mutation: {
     createUser: (_: any, { data }: { data: Omit<UserAttributes, 'id'> }) => {
-      try { return userService.create(data); } catch (err) {
+      try {
+        return userService.create(data);
+      } catch (err) {
         return { erro: 'Não foi possível criar o usuário' };
       }
     },

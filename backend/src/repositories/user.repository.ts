@@ -1,13 +1,13 @@
 import { IUserParser } from '../database/parsers/user.parser';
-import { User } from '../database/schemas/user';
-import { UserAttributes } from '../models/user.model';
+import { User as UserDb } from '../database/schemas/user';
+import User, { UserAttributes } from '../models/user.model';
 
 interface UserRepositoryDependencies {
   userParser: IUserParser;
 }
 
 export interface IUserRepository extends UserRepositoryDependencies {
-  create(data: Omit<UserAttributes, 'id'>): Promise<UserAttributes>;
+  create(data: Omit<UserAttributes, 'id'>): Promise<User>;
 };
 
 export class UserRepository implements IUserRepository {
@@ -17,8 +17,8 @@ export class UserRepository implements IUserRepository {
     this.userParser = userParser;
   }
 
-  async create(data: Omit<UserAttributes, 'id'>): Promise<UserAttributes> {
-    const result = await User.create(data);
+  async create(data: Omit<UserAttributes, 'id'>): Promise<User> {
+    const result = await UserDb.create(data);
 
     return this.userParser.parse(result);
   }
