@@ -3,37 +3,22 @@ import { UserAttributes } from '../../models/user.model';
 
 const userService = getUserService();
 
-const userMockedData = [
-  {
-    id: String(Math.random()),
-    name: 'Vitor',
-    surname: 'Sanches',
-    email: 'vitorsanches@blebers.com',
-  },
-  {
-    id: String(Math.random()),
-    name: 'Vitor',
-    surname: 'Sanches',
-    email: 'vitorsanches2@blebers.com',
-  },
-  {
-    id: String(Math.random()),
-    name: 'Vitor',
-    surname: 'Sanches',
-    email: 'vitorsanches3@blebers.com',
-  },
-];
-
 export default {
   Query: {
-    users: () => userMockedData,
+    users: async () => {
+      try {
+        return await userService.list();
+      } catch (err) {
+        throw new Error(err.message);
+      }
+    },
   },
   Mutation: {
-    createUser: (_: any, { data }: { data: Omit<UserAttributes, 'id'> }) => {
+    createUser: async (_: any, { data }: { data: Omit<UserAttributes, 'id'> }) => {
       try {
-        return userService.create(data);
+        return await userService.create(data);
       } catch (err) {
-        return { erro: 'Não foi possível criar o usuário' };
+        throw new Error(err.message);
       }
     },
   },

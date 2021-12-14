@@ -1,8 +1,6 @@
-import { mergeResolvers } from '@graphql-tools/merge';
-import { loadFilesSync } from '@graphql-tools/load-files';
-import path from 'path';
+import { merge } from 'lodash';
+import userResolver from './user.resolver';
 
-const resolversArray = loadFilesSync(path.join(__dirname, './', '**', '*.resolver.ts'));
-const resolvers = mergeResolvers(resolversArray);
+const resolvers = merge(userResolver);
 
 export default resolvers;

@@ -2,9 +2,10 @@ import { model, Schema } from 'mongoose';
 
 export interface UserDbAttributes {
   _id: string;
-  name: string;
-  surname: string;
   email: string;
+  name: string;
+  password: string;
+  surname: string;
 }
 
 const userSchema = new Schema<UserDbAttributes>({
@@ -20,6 +21,11 @@ const userSchema = new Schema<UserDbAttributes>({
     type: String,
     required: true,
     unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    select: false,
   },
 });
 

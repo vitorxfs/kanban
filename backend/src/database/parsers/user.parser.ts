@@ -11,13 +11,15 @@ export class UserParser implements IUserParser {
       _id,
       email,
       name,
+      password,
       surname,
     } = dbModel;
 
     return new User({
-      id: _id,
       email,
+      id: _id,
       name,
+      password,
       surname,
     });
   }

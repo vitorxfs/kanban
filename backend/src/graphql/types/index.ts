@@ -1,8 +1,5 @@
-import { mergeTypeDefs } from '@graphql-tools/merge';
-import { loadFilesSync } from '@graphql-tools/load-files';
-import path from 'path';
+import User from './user.schema';
 
-const typesArray = loadFilesSync(path.join(__dirname, './', '**', '*.gql'));
-const typeDefs = mergeTypeDefs(typesArray);
+const typeDefs = [User];
 
 export default typeDefs;

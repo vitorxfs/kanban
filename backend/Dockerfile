@@ -10,8 +10,6 @@ RUN yarn install
 COPY . .
 
 RUN yarn build
-# RUN cp -R src/graphql/types/**/*.gql build/graphql/types
-RUN cp -R src/graphql/types/*.gql build/graphql/types
 RUN yarn install
 
 EXPOSE 4000
