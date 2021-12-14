@@ -34,9 +34,7 @@ export class UserService implements IUserService {
       surname,
     } = data;
 
-    console.log(password);
     const hashedPassword = await this.cryptography.encrypt(password);
-    console.log(hashedPassword);
 
     return this.userRepository.create({
       email,
